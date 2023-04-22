@@ -1,0 +1,11 @@
+{
+    "require-dev": {
+        "symfony/var-dumper": "^6.1"
+    },
+  "require": {
+    "ext-mysqli": "*",
+        "nesbot/carbon": "^2.63",
+        "phpmailer/phpmailer": "^6.6",
+        "firebase/php-jwt": "^6.4"
+  }
+}
