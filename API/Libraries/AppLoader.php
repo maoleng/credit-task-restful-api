@@ -13,27 +13,13 @@ class AppLoader
         $loader->loadRequest();
         $loader->loadModels();
         $loader->loadHttp();
-        $loader->loadMails();
         $loader->loadRedirectResponse();
-        $loader->loadSupport();
-        $loader->loadJWT();
-        $loader->loadExternalHelpers();
+        $loader->loadClient();
     }
 
-    private function loadExternalHelpers(): void
+    private function loadClient(): void
     {
-        require_once asset('App/Helper.php');
-        $this->loadFiles('App/Helpers');
-    }
-
-    private function loadJWT(): void
-    {
-        require_once asset('Libraries/JWT/JWT.php');
-    }
-
-    private function loadSupport(): void
-    {
-        $this->loadFiles('Libraries/Support');
+        require_once asset('Libraries/Client/Client.php');
     }
 
     private function loadRedirectResponse(): void
@@ -43,16 +29,9 @@ class AppLoader
         require_once asset('Libraries/Redirect/Route.php');
     }
 
-    private function loadMails(): void
-    {
-        require_once asset('Libraries/Mail/Mailable.php');
-        $this->loadFiles('App/Mails');
-    }
-
     private function loadHttp(): void
     {
         require_once asset('App/Http/Controllers/Controller.php');
-        require_once asset('App/Http/Middlewares/Middleware.php');
     }
 
     private function loadModels(): void

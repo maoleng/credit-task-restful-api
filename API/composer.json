@@ -4,6 +4,7 @@
     },
   "require": {
     "ext-mysqli": "*",
-        "nesbot/carbon": "^2.63"
+        "nesbot/carbon": "^2.63",
+    "ext-curl": "*"
   }
 }
