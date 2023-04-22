@@ -1,9 +1,5 @@
 <?php
 
-namespace Libraries\Client;
-
-use CurlHandle;
-
 class Client
 {
 
@@ -69,7 +65,7 @@ class Client
 
     public function post($url, $optionals = []): static
     {
-        $this->response = $this->request('GET', $url, $optionals);
+        $this->response = $this->request('POST', $url, $optionals);
 
         return $this;
     }
@@ -88,7 +84,7 @@ class Client
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return json_decode($this->response, true);
     }

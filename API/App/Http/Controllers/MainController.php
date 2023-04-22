@@ -52,7 +52,15 @@ class MainController extends Controller
     public function showProduct(Request $request, $category_name, $product_id): void
     {
         $category = $this->getCategoryOrFail($category_name);
-        $item = (new Item)->where('category_id', $category->id)->findOrFail($product_id);
+        $item = (new Item)->where('category_id', $category->id)->find($product_id);
+        if ($item === null) {
+            response()->json([
+                'status' => false,
+                'data' => [
+                    'message' => 'Product not found',
+                ],
+            ]);
+        }
 
         response()->json([
             'status' => true,
@@ -88,13 +96,21 @@ class MainController extends Controller
     public function deleteProduct(Request $request, $category_name, $product_id): void
     {
         $category = $this->getCategoryOrFail($category_name);
-        $item = (new Item)->where('category_id', $category->id)->findOrFail($product_id);
+        $item = (new Item)->where('category_id', $category->id)->find($product_id);
+        if ($item === null) {
+            response()->json([
+                'status' => false,
+                'data' => [
+                    'message' => 'Product not found',
+                ],
+            ]);
+        }
 
         try {
             $item->delete();
         } catch (\Exception) {
             response()->json([
-                'status' => true,
+                'status' => false,
                 'data' => [
                     'message' => 'Product is in another order',
                 ],
@@ -113,7 +129,12 @@ class MainController extends Controller
     {
         $category = (new Category)->where('name', $category_name)->first();
         if ($category === null) {
-            abort(404);
+            response()->json([
+                'status' => false,
+                'data' => [
+                    'message' => 'Not fail category',
+                ],
+            ]);
         }
 
         return $category;
