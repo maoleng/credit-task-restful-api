@@ -9,18 +9,13 @@ use Libraries\Request\Request;
 class MainController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
-        $category_id = $request->get('category_id');
         $categories = (new Category)->get();
-        $sql = "
+        $items = (new Item)->raw('
             SELECT Item0504.*, Category0504.name as `category_name` FROM Item0504
             LEFT JOIN Category0504 ON Item0504.category_id = Category0504.id
-        ";
-        if ($category_id !== null) {
-            $sql .= "WHERE categories.id = '$category_id'";
-        }
-        $items = (new Item)->raw($sql);
+        ');
 
         return view('index', [
             'categories' => $categories,
