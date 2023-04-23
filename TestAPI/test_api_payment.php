@@ -1,6 +1,6 @@
 <?php
 
-# DELETE /pay/{order_id}/{bank_code}
+# POST /pay/{order_id}/{bank_code}
 
 require 'Client.php';
 $client = new Client;
