@@ -26,6 +26,7 @@ trait HandleRequest
             foreach ($arr_keys as $arr_key) {
                 if (str_starts_with($arr_key, $url_optional['str_starts_with'])) {
                     preg_match('/\/{[a-z]+}/', $arr_key, $match);
+                    dd($arr_key, $url_optional['no_optional_url'], $match);
                     $key = $url_optional['no_optional_url'].$match[0];
                     $optional_value = $url_optional['optional_value'];
                 }

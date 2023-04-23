@@ -132,7 +132,7 @@ class MainController extends Controller
             response()->json([
                 'status' => false,
                 'data' => [
-                    'message' => 'Not fail category',
+                    'message' => 'Not found category',
                 ],
             ]);
         }

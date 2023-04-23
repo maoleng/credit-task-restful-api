@@ -13,7 +13,6 @@ class AppLoader
         $loader->loadRequest();
         $loader->loadModels();
         $loader->loadHttp();
-        $loader->loadMails();
         $loader->loadSession();
         $loader->loadRedirectResponse();
         $loader->loadSupport();
@@ -43,16 +42,9 @@ class AppLoader
         require_once asset('Libraries/Session/Session.php');
     }
 
-    private function loadMails(): void
-    {
-        require_once asset('Libraries/Mail/Mailable.php');
-        $this->loadFiles('App/Mails');
-    }
-
     private function loadHttp(): void
     {
         require_once asset('App/Http/Controllers/Controller.php');
-        require_once asset('App/Http/Middlewares/Middleware.php');
     }
 
     private function loadModels(): void
