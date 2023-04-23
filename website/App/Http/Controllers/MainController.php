@@ -40,6 +40,7 @@ class MainController extends Controller
                 'name' => $item->name,
                 'size' => $item->size,
                 'price' => (float) $item->price,
+                'category_name' => $category->name,
             ];
         }
 

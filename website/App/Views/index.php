@@ -69,6 +69,7 @@
                             <br />Name: ${each.name}
                             <br />Size: ${each.size}
                             <br />Price: ${prettyMoney(each.price)}
+                            <br />Category: ${each.category_name}
                         </div>
                     </div>
                 `)
